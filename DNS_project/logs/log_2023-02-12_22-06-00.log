@@ -1,0 +1,17 @@
+
+-----
+Test: test_smoke.py::Test_DNS::test_smoke (call)
+Start time: 2023-02-12 22:06:01.323512
+Start name method: search_name_item
+
+End time: 2023-02-12 22:06:05.717772
+End name method: search_name_item
+URL: https://www.dns-shop.ru/
+
+-----
+
+-----
+Test: test_smoke.py::Test_DNS::test_smoke (call)
+Start time: 2023-02-12 22:06:05.717772
+Start name method: filter_notebook
+

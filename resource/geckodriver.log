@@ -1,0 +1,45 @@
+1666888731908	geckodriver	INFO	Listening on 127.0.0.1:64246
+1666888734898	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64247" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\HP PAVILION\\AppData\\Local\\Temp\\rust_mozprofilePNVt9w"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+DevTools listening on ws://localhost:64247/devtools/browser/45b84b4e-f7f5-4429-977b-d107be3148ad
+1666888737895	Marionette	INFO	Listening on port 64255
+1666888738045	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 12780, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+!!! error running onStopped callback: TypeError: callback is not a function
+1666888757612	Marionette	INFO	Stopped listening on port 64255
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1666888757808	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/observers/TargetObserver.jsm :: stop :: line 59"  data: no] Stack trace: stop()@TargetObserver.jsm:59
+unwatchForTabs()@TargetList.jsm:71
+unwatchForTargets()@TargetList.jsm:38
+destructor()@TargetList.jsm:110
+close()@RemoteAgent.jsm:123
+1666888775503	geckodriver	INFO	Listening on 127.0.0.1:64308
+1666888778515	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64309" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\HP PAVILION\\AppData\\Local\\Temp\\rust_mozprofilevzTWoZ"
+1666888879051	geckodriver	INFO	Listening on 127.0.0.1:64650
+1666888882048	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64651" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\HP PAVILION\\AppData\\Local\\Temp\\rust_mozprofilemnLS7e"
+1666888882387	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\HP PAVILION\\AppData\\Local\\Temp\\rust_mozprofilemnLS7e\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:64651/devtools/browser/7f54f035-6b1d-4b89-823b-3b5153654f24
+1666888884709	Marionette	INFO	Listening on port 64656
+1666888885190	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1666888891153	Marionette	INFO	Stopped listening on port 64656
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1666889171476	geckodriver	INFO	Listening on 127.0.0.1:64766
+1666889174478	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64767" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\HP PAVILION\\AppData\\Local\\Temp\\rust_mozprofile0qiAIP"
+1666889174786	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\HP PAVILION\\AppData\\Local\\Temp\\rust_mozprofile0qiAIP\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:64767/devtools/browser/10c0110a-befd-4054-9689-4484ebd2c48a
+1666889176878	Marionette	INFO	Listening on port 64772
+1666889177116	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://st.vk.com/dist/web/grip.e727955531f21be69e9e.js?48c8d5d4e2ed096b6b46dfe2ad38ef9f, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://st.vk.com/dist/web/grip.e727955531f21be69e9e.js?48c8d5d4e2ed096b6b46dfe2ad38ef9f, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1666889182023	Marionette	INFO	Stopped listening on port 64772
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
