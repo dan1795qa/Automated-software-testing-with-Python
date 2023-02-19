@@ -1,0 +1,11 @@
+
+-----
+Test: tests/test_regress_main_page.py::test_regress__main_page (call)
+Start time: 2023-02-18 17:45:06.589131
+Start name method: headers_menu_elements
+
+End time: 2023-02-18 17:45:11.598567
+End name method: headers_menu_elements
+URL: https://www.a1.by/ru/
+
+-----
