@@ -4,7 +4,7 @@ from blocks.headers_block import Headers_blocks
 from blocks.headers_block_proba import Headers_blocks_proba
 
 
-def test_regress__main_page():
+def test_regress_main_page():
 
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])

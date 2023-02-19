@@ -1,4 +1,9 @@
 import datetime
+from telnetlib import EC
+from selenium.webdriver.support import expected_conditions as EC
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Base():
@@ -20,7 +25,8 @@ class Base():
         print("Screenshot: " + name_screenshot)
 
     """"Method assert word"""
-    def assert_word(self, word, result):
+    def assert_word(self, locator, result):
+        word = WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value_word = word.text
         assert value_word == result
         print("Good value word")
@@ -42,3 +48,8 @@ class Base():
         # time.sleep(3)
         self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[0])
+
+    """"Method refresh and back"""
+    def back_and_refresh(self):
+        self.driver.back()
+        self.driver.refresh()

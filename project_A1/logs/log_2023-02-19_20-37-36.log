@@ -1,0 +1,11 @@
+
+-----
+Test: tests/test_regress_main_page.py::test_regress__main_page (call)
+Start time: 2023-02-19 20:37:38.335164
+Start name method: headers_menu_elements
+
+End time: 2023-02-19 20:37:55.462327
+End name method: headers_menu_elements
+URL: data:,
+
+-----

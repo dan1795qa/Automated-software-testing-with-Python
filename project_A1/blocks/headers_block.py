@@ -1,5 +1,5 @@
 import time
-
+from selenium import webdriver
 import allure
 from selenium.webdriver import ActionChains
 
@@ -26,6 +26,19 @@ class Headers_blocks(Base):
     logo_image = '/html/body/header/nav[2]/div/div[1]/a/span/img'
     private_customers_button = "//span[contains (text(), 'Частным клиентам')]"
 
+    business_button = "//span[contains (text(), 'Бизнесу')]"
+    assert_business_button = "//h2[contains (text(), ' Бизнес решения')]"
+
+    company_button = "//span[contains (text(), 'О компании')]"
+    assert_company_button = "//h1[contains (text(), 'О компании')]"
+
+    shopA1_button = "//span[contains (text(), 'Магазины А1')]"
+    assert_shopA1_button = ""
+
+    i_onlain_button = "//span[contains (text(), '#яонлайн')]"
+    business_cab_button = "// span[contains(text(), 'Бизнес-кабинеты')]"
+
+
 
 
     # Getters
@@ -37,25 +50,94 @@ class Headers_blocks(Base):
     def get_private_customers_button(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.private_customers_button)))
 
+    def get_business_button(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.business_button)))
+
+    def get_company_button(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.company_button)))
+
+    def get_shopA1_button(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.shopA1_button)))
+
+    def get_i_onlain_button(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.i_onlain_button)))
+
+    def get_business_cab_button(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.business_cab_button)))
 
 
     # Actions
 
     def click_logo_image(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.logo_image)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
         self.get_logo_image().click()
         print('Click logo image')
 
-
     def click_private_customers_button(self):
-        self.get_private_customers_button().click()
-        print('Click private_customers_button')
-        self.driver.back()
-
-    def action_button(self):
-        element = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.private_customers_button)))
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.private_customers_button)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
-        print("Cursor навелся")
+        print("Move to element success")
+
+        self.get_private_customers_button().click()
+        print('Click private_customers_button')
+
+    def click_business_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.business_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
+        self.get_business_button().click()
+        print('Click business_button')
+
+    def click_company_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.company_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
+        self.get_company_button().click()
+        print('Click company_button')
+
+    def click_shopA1_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.shopA1_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
+        self.get_shopA1_button().click()
+        print('Click shopA1_button')
+
+    def click_i_onlain_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.i_onlain_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
+        self.get_i_onlain_button().click()
+        print('Click i_onlain_button')
+
+    def click_business_cab_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.business_cab_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
+        self.get_business_cab_button().click()
+        print('Click shopA1_button')
+
 
 
     # Methods
@@ -66,10 +148,25 @@ class Headers_blocks(Base):
             self.driver.get(self.url)
             self.driver.maximize_window()
             self.get_current_url()
-            self.get_screenshot()
+            # self.get_screenshot()
+            print('-'*100)
+
             self.click_logo_image()
-            self.action_button()
-            time.sleep(5)
+            self.assert_url(self.url)
+            print('-'*100)
+
+
             self.click_private_customers_button()
-            time.sleep(5)
+            self.assert_url(self.url)
+            print('-'*100)
+
+
+            self.click_business_button()
+            self.assert_url('https://www.a1.by/ru/corporate/')
+            self.assert_word(self.assert_business_button, 'Бизнес решения')
+            self.back_and_refresh()
+            print('-'*100)
+
+
+
             Logger.add_end_step(url=self.driver.current_url, method='headers_menu_elements')
