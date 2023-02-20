@@ -36,8 +36,10 @@ class Headers_blocks(Base):
     assert_shopA1_button = ""
 
     i_onlain_button = "//span[contains (text(), '#яонлайн')]"
-    business_cab_button = "// span[contains(text(), 'Бизнес-кабинеты')]"
+    assert_onlain_button = ""
 
+    business_cab_button = "// span[contains(text(), 'Бизнес-кабинеты')]"
+    assert_business_cab_button = ""
 
 
 
@@ -155,11 +157,9 @@ class Headers_blocks(Base):
             self.assert_url(self.url)
             print('-'*100)
 
-
             self.click_private_customers_button()
             self.assert_url(self.url)
             print('-'*100)
-
 
             self.click_business_button()
             self.assert_url('https://www.a1.by/ru/corporate/')
@@ -167,6 +167,16 @@ class Headers_blocks(Base):
             self.back_and_refresh()
             print('-'*100)
 
+            self.click_company_button()
+            self.assert_url('https://www.a1.by/ru/company/')
+            self.assert_word(self.assert_company_button, 'О компании')
+            self.back_and_refresh()
+            print('-' * 100)
+
+            # self.click_shopA1_button()
+            # self.assert_url('https://www.a1.by/ru/company/')
+            # self.assert_word(self.assert_company_button, 'О компании')
+            # self.back_and_refresh()
 
 
             Logger.add_end_step(url=self.driver.current_url, method='headers_menu_elements')

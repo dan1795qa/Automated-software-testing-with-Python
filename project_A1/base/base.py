@@ -42,10 +42,18 @@ class Base():
         self.driver.execute_script("window.scroll(" + str(x) + ',' + str(y) +")")
         print("Good scroll ")
 
-    """"Method tabbing"""
-    def tabbing(self):
+    """"Method tabbing close_switch"""
+    def tabbing_close_switch(self):
         print(f"List tabs: {str(self.driver.window_handles)}")
         # time.sleep(3)
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
+
+    """"Method tabbing switch_close"""
+    def tabbing_switch_close(self):
+        print(f"List tabs: {str(self.driver.window_handles)}")
+        # time.sleep(3)
+        self.driver.switch_to.window(self.driver.window_handles[0])
         self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[0])
 
