@@ -53,7 +53,7 @@ class Base():
     def tabbing_switch_close(self):
         print(f"List tabs: {str(self.driver.window_handles)}")
         # time.sleep(3)
-        self.driver.switch_to.window(self.driver.window_handles[0])
+        self.driver.switch_to.window(self.driver.window_handles[1])
         self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[0])
 

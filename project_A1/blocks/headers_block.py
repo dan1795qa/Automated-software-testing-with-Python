@@ -33,7 +33,7 @@ class Headers_blocks(Base):
     assert_company_button = "//h1[contains (text(), 'О компании')]"
 
     shopA1_button = "//span[contains (text(), 'Магазины А1')]"
-    assert_shopA1_button = ""
+    assert_shopA1_button = "//h1[contains (text(), 'Магазины А1')]"
 
     i_onlain_button = "//span[contains (text(), '#яонлайн')]"
     assert_onlain_button = ""
@@ -145,6 +145,7 @@ class Headers_blocks(Base):
     # Methods
 
     def headers_menu_elements(self):
+
         with allure.step('headers_menu_elements'):
             Logger.add_start_step(method='headers_menu_elements')
             self.driver.get(self.url)
@@ -173,10 +174,15 @@ class Headers_blocks(Base):
             self.back_and_refresh()
             print('-' * 100)
 
-            # self.click_shopA1_button()
-            # self.assert_url('https://www.a1.by/ru/company/')
-            # self.assert_word(self.assert_company_button, 'О компании')
-            # self.back_and_refresh()
+            self.click_shopA1_button()
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            self.assert_url('https://www.a1.by/ru/company/company-centers')
+            self.assert_word(self.assert_shopA1_button, 'Магазины А1')
+            self.driver.close()
+            self.driver.switch_to.window(self.driver.window_handles[0])
+            print("Tubbing success")
+            print('-' * 100)
+
 
 
             Logger.add_end_step(url=self.driver.current_url, method='headers_menu_elements')
