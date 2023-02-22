@@ -35,6 +35,9 @@ class Headers_blocks(Base):
     shopA1_button = "//span[contains (text(), 'Магазины А1')]"
     assert_shopA1_button = "//h1[contains (text(), 'Магазины А1')]"
 
+    help_and_support_button = "//span[contains (text(), 'Помощь и поддержка')]"
+    assert_help_and_support_button = "//h2[contains (text(), 'Частным клиентам')]"
+
     i_onlain_button = "//span[contains (text(), '#яонлайн')]"
     assert_onlain_button = ""
 
@@ -60,6 +63,9 @@ class Headers_blocks(Base):
 
     def get_shopA1_button(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.shopA1_button)))
+
+    def get_help_and_support_button(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.help_and_support_button)))
 
     def get_i_onlain_button(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.i_onlain_button)))
@@ -120,6 +126,16 @@ class Headers_blocks(Base):
         self.get_shopA1_button().click()
         print('Click shopA1_button')
 
+    def click_help_and_support_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.help_and_support_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+
+        self.get_help_and_support_button().click()
+        print('Click help_and_support_button')
+
     def click_i_onlain_button(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.i_onlain_button)))
@@ -178,9 +194,16 @@ class Headers_blocks(Base):
             self.driver.switch_to.window(self.driver.window_handles[1])
             self.assert_url('https://www.a1.by/ru/company/company-centers')
             self.assert_word(self.assert_shopA1_button, 'Магазины А1')
-            self.driver.close()
+            # self.driver.close()
             self.driver.switch_to.window(self.driver.window_handles[0])
             print("Tubbing success")
+            self.back_and_refresh()
+            print('-' * 100)
+
+            self.click_help_and_support_button()
+            self.assert_url('https://support.a1.by/chastnym-klientam/')
+            self.assert_word(self.assert_company_button, 'Частным клиентам')
+            self.back_and_refresh()
             print('-' * 100)
 
 
