@@ -56,11 +56,17 @@ class Headers_blocks(Base):
     def get_RU(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.ru_button)))
 
-    def click_language(self):
+    def click_language_EN(self):
         self.get_EN().click()
+        print('Language EN check')
+
+    def click_language_BE(self):
         self.get_BE().click()
+        print('Language BE check')
+
+    def click_language_RU(self):
         self.get_RU().click()
-        print('Language check')
+        print('Language RU check')
 
 
     # Getters
@@ -174,30 +180,28 @@ class Headers_blocks(Base):
 
             self.click_logo_image()
             self.assert_url(self.url)
-            self.click_language()
+            self.click_language_EN()
+            self.assert_url('https://www.a1.by/en/')
+            self.click_language_BE()
+            self.assert_url('https://www.a1.by/be/')
+            self.click_language_RU()
+            self.assert_url('https://www.a1.by/ru/')
             print('-'*100)
 
             self.click_private_customers_button()
             self.assert_url(self.url)
-            self.click_language()
             print('-'*100)
 
             self.click_business_button()
             self.assert_url('https://www.a1.by/ru/corporate/')
             self.assert_word(self.assert_business_button, 'Бизнес решения')
-            self.click_language()
-            self.click_private_customers_button()
-            self.assert_url(self.url)
-            self.driver.refresh()
+            self.back_and_refresh()
             print('-'*100)
 
             self.click_company_button()
             self.assert_url('https://www.a1.by/ru/company/')
             self.assert_word(self.assert_company_button, 'О компании')
-            self.click_language()
-            self.click_private_customers_button()
-            self.assert_url(self.url)
-            self.driver.refresh()
+            self.back_and_refresh()
             print('-' * 100)
 
             self.click_shopA1_button()
@@ -205,7 +209,6 @@ class Headers_blocks(Base):
             print("Tubbing success")
             self.assert_url('https://www.a1.by/ru/company/company-centers')
             self.assert_word(self.assert_shopA1_button, 'Магазины А1')
-            self.click_language()
             self.click_private_customers_button()
             self.assert_url(self.url)
             self.driver.refresh()
