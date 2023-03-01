@@ -1,0 +1,22 @@
+Start test
+----------------------------------------------------------------------------------------------------
+Start test 'Subheadings_menu_elements'
+Current: https://www.a1.by/ru/
+Screenshot: screenshot 2023.03.01.16.32.07.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click logo image
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.32.11.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click logo image
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.32.19.png
+----------------------------------------------------------------------------------------------------
+Finish test 'Subheadings_menu_elements'
+----------------------------------------------------------------------------------------------------
+Finish test
+Finish extended_test main page

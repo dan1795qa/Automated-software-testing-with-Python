@@ -29,6 +29,7 @@ def test_subheadings_menu_elements (set_up, set_group):
 
     print('-' * 100)
     print("Start test 'Subheadings_menu_elements'")
+    print('-' * 100)
     sbh = Subteadings(driver)
     sbh.subheadings_menu_elements()
     print("Finish test 'Subheadings_menu_elements'")

@@ -1,0 +1,22 @@
+
+-----
+Test: tests/test_extended_main_page.py::test_headers_menu_elements (call)
+Start time: 2023-03-01 23:13:37.708341
+Start name method: headers_menu_elements
+
+End time: 2023-03-01 23:15:07.035557
+End name method: headers_menu_elements
+URL: https://www.a1.by/ru/
+
+-----
+
+-----
+Test: tests/test_extended_main_page.py::test_subheadings_menu_elements (call)
+Start time: 2023-03-01 23:15:10.200845
+Start name method: subheadings_menu_elements
+
+End time: 2023-03-01 23:16:09.611160
+End name method: subheadings_menu_elements
+URL: https://www.a1.by/ru/
+
+-----

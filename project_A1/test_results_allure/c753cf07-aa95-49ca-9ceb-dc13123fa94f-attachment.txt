@@ -1,0 +1,62 @@
+Start extended_test main page
+Start test
+----------------------------------------------------------------------------------------------------
+Start test 'Headers_menu_elements'
+Current: https://www.a1.by/ru/
+Screenshot: screenshot 2023.03.01.16.31.07.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click logo image
+Good value url
+Language EN check
+Good value url
+Screenshot: screenshot 2023.03.01.16.31.18.png
+Language BE check
+Good value url
+Screenshot: screenshot 2023.03.01.16.31.22.png
+Language RU check
+Good value url
+Screenshot: screenshot 2023.03.01.16.31.26.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click private_customers_button
+Good value url
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click business_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.31.35.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click company_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.31.40.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click shopA1_button
+List tabs: ['CDwindow-FE8992ADFCC0B2DE479EA4E2DCF28C35', 'CDwindow-AFB5CE09674215DB2919F81A308DEE7A']
+Tubbing success
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.31.47.png
+Move to element success
+Click private_customers_button
+Good value url
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click help_and_support_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.31.54.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click i_onlain_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.16.31.59.png
+----------------------------------------------------------------------------------------------------
+Finish test 'Headers_menu_elements'
+----------------------------------------------------------------------------------------------------
+Finish test

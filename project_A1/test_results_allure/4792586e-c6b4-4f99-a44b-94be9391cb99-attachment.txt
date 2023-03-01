@@ -1,0 +1,46 @@
+
+Start extended_test main page
+Start test
+----------------------------------------------------------------------------------------------------
+Start test 'Subheadings_menu_elements'
+----------------------------------------------------------------------------------------------------
+Current: https://www.a1.by/ru/
+Screenshot: screenshot 2023.03.01.20.04.15.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click tariffs_and_services_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.20.04.24.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click go_to_A1_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.20.04.41.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click internet_shop_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.20.04.55.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click video_service_VOKA_button
+List tabs: ['CDwindow-63E25539994122929843D010F4501D0C', 'CDwindow-8FB5CA761D05C8F3BFBE182AAC584427']
+Switch to window success
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.20.05.14.png
+----------------------------------------------------------------------------------------------------
+Move to element success
+Click fin_services_button
+Good value url
+Good value word
+Screenshot: screenshot 2023.03.01.20.05.20.png
+----------------------------------------------------------------------------------------------------
+Finish test 'Subheadings_menu_elements'
+----------------------------------------------------------------------------------------------------
+
+Finish test
+Finish extended_test main page
