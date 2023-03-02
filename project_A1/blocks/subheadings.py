@@ -40,6 +40,11 @@ class Subteadings(Base):
     fin_services_button = "//span[contains (text(), 'Финансовые сервисы')]"
     assert_fin_services_button = "//h1[contains (text(), 'Услуги')]"
 
+    search_input = '//*[@id="dropdownGlobalSearch"]/span'
+    icon_questions = '//*[@id="dropdownMenuContactsForm"]/span'
+    cart = '//*[@id="mini-cart-loader-2"]'
+    user_profile = '//*[@id="dropdownMenuUser"]/span'
+
 
     # Getters
 
@@ -57,6 +62,18 @@ class Subteadings(Base):
 
     def get_fin_services_button(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.fin_services_button)))
+
+    def get_search_input(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.search_input)))
+
+    def get_icon_questions(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.icon_questions)))
+
+    def get_cart(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
+
+    def get_user_profile(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.user_profile)))
 
 
 
