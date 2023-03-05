@@ -42,11 +42,11 @@ class Subheadings_right(Base):
         hover.perform()
         print("Move to element success")
         self.get_search_input().click()
-        print('Click fin_services_button')
+        print('Click search_input')
         self.get_area_search_input().send_keys('Тарифы')
         self.get_area_search_input().send_keys(Keys.RETURN)
         print('Input text in search area')
-        # self.assert_url('https://www.a1.by/ru/search?text=Тарифы')
+        self.assert_url('https://www.a1.by/ru/search?text=%D0%A2%D0%B0%D1%80%D0%B8%D1%84%D1%8B')
         self.assert_word(self.assert_search_input, 'Результаты поиска для «Тарифы»')
 
 
@@ -55,20 +55,20 @@ class Subheadings_right(Base):
     icon_questions = '//*[@id="dropdownMenuContactsForm"]/span'
 
     ask_questions = '/html/body/header/nav[2]/div/div[2]/div[2]/div/div[1]/button[1]'
-    assert_ask_questions = '//span[contains (text(), "Онлайн-консультант")]'
+    assert_ask_questions = '//div[contains (text(), "Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.")]'
     close_window_ask_questions = '//*[@id="webim_chat"]/div[1]/div/div'
 
     questions = '/html/body/header/nav[2]/div/div[2]/div[2]/div/div[1]/button[2]'
-    assert_questions = '//span[contains (text(), "Задать вопрос по покрытию")]'
+    assert_questions = '//h1[contains (text(), "Задать вопрос по покрытию")]'
 
-    # vk_link = '//span[contains (text(), "Результаты поиска для «тарифы»")]'
-    # assert_ask_questions = ''
-    #
-    # fb_link = '//span[contains (text(), "Facebook")]'
-    # assert_ask_questions = ''
-    #
-    # ok_link = '//span[contains (text(), "Одноклассники»")]'
-    # assert_ask_questions = ''
+    vk_link = '//span[contains (text(), "Вконтакте")]'
+    assert_vk_link = '//div[contains (text(), "Чтобы просматривать эту страницу, нужно зайти на сайт.")]'
+
+    fb_link = '//span[contains (text(), "Facebook")]'
+    assert_fb_link = '//h2[contains (text(), "Будьте на связи с важными для вас людьми.")]'
+
+    ok_link = '//span[contains (text(), "Одноклассники")]'
+    assert_ok_link = '//div[contains (text(), "Нет профиля в Одноклассниках")]'
 
 
     # Getters
@@ -111,7 +111,7 @@ class Subheadings_right(Base):
         print("Move to element success")
         self.get_ask_questions().click()
         print('Click ask_questions')
-        self.assert_word(self.assert_ask_questions, 'Онлайн-консультант')
+        self.assert_word(self.assert_ask_questions, 'Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.')
         self.get_close_window_ask_questions().click()
 
     def click_questions(self):
@@ -124,6 +124,7 @@ class Subheadings_right(Base):
         print("Move to element success")
         self.get_questions().click()
         print('Click questions')
+        self.assert_url('https://www.a1.by/ru/company/coverage-ask-question')
         self.assert_word(self.assert_questions, 'Задать вопрос по покрытию')
 
     def click_vk_link(self):
@@ -136,8 +137,18 @@ class Subheadings_right(Base):
         print("Move to element success")
         self.get_vk_link().click()
         print('Click vk_link')
+        print(f"List tabs: {str(self.driver.window_handles)}")
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        # self.assert_url('https://vk.com/login?u=2&to=L3dyaXRlLTM1ODMxMDI-')
+        self.assert_word(self.assert_vk_link, 'Чтобы просматривать эту страницу, нужно зайти на сайт.')
+        self.get_screenshot()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
+
 
     def click_fb_link(self):
+        self.get_icon_questions().click()
+        print('Click icon_questions')
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.fb_link)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -145,8 +156,17 @@ class Subheadings_right(Base):
         print("Move to element success")
         self.get_fb_link().click()
         print('Click fb_link')
+        print(f"List tabs: {str(self.driver.window_handles)}")
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        # self.assert_url('https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F223113717743177%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0')
+        self.assert_word(self.assert_fb_link, 'Будьте на связи с важными для вас людьми.')
+        self.get_screenshot()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
     def click_ok_link(self):
+        self.get_icon_questions().click()
+        print('Click icon_questions')
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.ok_link)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -154,16 +174,39 @@ class Subheadings_right(Base):
         print("Move to element success")
         self.get_ok_link().click()
         print('Click ok_link')
+        print(f"List tabs: {str(self.driver.window_handles)}")
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        # self.assert_url('https://ok.ru/dk?st.cmd=anonymMain&st.lgi=WYL93Tgz1t4H')
+        self.assert_word(self.assert_ok_link, 'Нет профиля в Одноклассниках')
+        self.get_screenshot()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
 
-    # """"Cart"""
-    # # Locators
-    # cart = '//*[@id="mini-cart-loader-2"]'
-    #
-    # # Getters
-    # def get_cart(self):
-    #     return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
-    #
+    """"Cart"""
+    # Locators
+    cart = '//*[@id="mini-cart-loader-2"]'
+    assert_cart = '//h1[contains (text(), "Корзина")]'
+
+    # Getters
+    def get_cart(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
+
+    # Actions
+
+    def click_cart(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.cart)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+        self.get_cart().click()
+        print('Click cart')
+        self.assert_url('https://www.a1.by/ru/cart')
+        self.assert_word(self.assert_cart, 'Корзина')
+
+
+
     # """"User_profile"""
     # # Locators
     # user_profile = '//*[@id="dropdownMenuUser"]/span'
@@ -215,9 +258,19 @@ class Subheadings_right(Base):
             self.click_questions()
             self.get_screenshot()
             self.back_and_refresh()
-
-
+            self.click_vk_link()
+            self.click_fb_link()
+            self.click_ok_link()
             # self.back_and_refresh()
+            print('-' * 100)
+
+            self.click_cart()
+            self.get_screenshot()
+            self.back_and_refresh()
+            print('-' * 100)
+
+
+
             print('-' * 100)
 
             # self.click_video_service_VOKA_button()

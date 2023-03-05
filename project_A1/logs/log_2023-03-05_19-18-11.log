@@ -1,0 +1,33 @@
+
+-----
+Test: tests/test_extended_main_page.py::test_headers_menu_elements (call)
+Start time: 2023-03-05 19:18:13.255336
+Start name method: headers_menu_elements
+
+End time: 2023-03-05 19:19:30.450726
+End name method: headers_menu_elements
+URL: https://www.a1.by/ru/
+
+-----
+
+-----
+Test: tests/test_extended_main_page.py::test_subheadings_menu_elements_left (call)
+Start time: 2023-03-05 19:19:33.910154
+Start name method: subheadings_menu_elements_left
+
+End time: 2023-03-05 19:20:19.182683
+End name method: subheadings_menu_elements_left
+URL: https://www.a1.by/ru/services/other-services/perehod-na-a1/p/perehod_na_a1
+
+-----
+
+-----
+Test: tests/test_extended_main_page.py::test_subheadings_menu_elements_right (call)
+Start time: 2023-03-05 19:20:23.493522
+Start name method: subheadings_menu_elements_right
+
+End time: 2023-03-05 19:21:07.238567
+End name method: subheadings_menu_elements_right
+URL: https://www.a1.by/ru/
+
+-----
