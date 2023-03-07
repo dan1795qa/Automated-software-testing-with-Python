@@ -19,8 +19,8 @@ def test_headers_menu_elements(set_up, set_group):
     hb.headers_menu_elements()
     print("Finish test 'Headers_menu_elements'")
     print('-' * 100)
-#
-#
+
+
 @allure.description("Test 'Subheadings_menu_elements_left'")
 def test_subheadings_menu_elements_left (set_up, set_group):
 

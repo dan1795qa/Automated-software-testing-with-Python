@@ -206,33 +206,82 @@ class Subheadings_right(Base):
         self.assert_word(self.assert_cart, 'Корзина')
 
 
+    """"User_profile"""
+    # Locators
+    user_profile = '//*[@id="dropdownMenuUser"]/span'
 
-    # """"User_profile"""
-    # # Locators
-    # user_profile = '//*[@id="dropdownMenuUser"]/span'
-    #
-    # # Getters
-    # def get_user_profile(self):
-    #     return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.user_profile)))
-    #
-    #
-    #
-    # # Actions
-    #
-    # def input_search_input(self):
-    #     element = WebDriverWait(self.driver, 30).until(
-    #         EC.element_to_be_clickable((By.XPATH, self.search_input)))
-    #     hover = ActionChains(self.driver).move_to_element(element)
-    #     hover.perform()
-    #     print("Move to element success")
-    #
-    #     self.get_search_input().click()
-    #     print('Click fin_services_button')
-    #
-    #     self.get_area_search_input().send_keys('Тарифы')
-    #     self.get_area_search_input().send_Keys(Keys.RETURN)
-    #     print('Input text in search area')
-    #
+    log_in = '//*[@id="loginButton"]/a'
+    assert_log_in = '//h1[contains (text(), "Вход в аккаунт")]'
+
+    cash_in = '//*[@id="refillBalance"]/a'
+    assert_cash_in = '//h2[contains (text(), "Пополнить баланс:")]'
+
+    private_office = '//*[@id="personalAccount"]/a'
+    assert_private_office = '//span[contains (text(), "Вход в аккаунт")]'
+
+
+
+    # Getters
+    def get_user_profile(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.user_profile)))
+
+    def get_log_in(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.log_in)))
+
+    def get_cash_in(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.cash_in)))
+
+    def get_private_office(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.private_office)))
+
+
+
+    # Actions
+
+    def click_user_profile(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.user_profile)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+        self.get_user_profile().click()
+        print('Click get_user_profile')
+
+    def click_log_in(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.log_in)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+        self.get_log_in().click()
+        print('Click get_log_in')
+        self.assert_url('https://asmp.a1.by/asmp/LoginMasterServlet?service=Portal&cookie=skip&level=20&userRequestURL=https%3A%2F%2Fwww.a1.by%2Fru%2F%3FfromSSO%3Dtrue')
+        self.assert_word(self.assert_log_in, 'Вход в аккаунт')
+
+    def click_cash_in(self):
+        self.get_user_profile().click()
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.cash_in)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+        self.get_cash_in().click()
+        print('Click get_cash_in')
+        self.assert_url('https://www.a1.by/epay')
+        self.assert_word(self.assert_cash_in, 'Пополнить баланс:')
+
+    def click_private_office(self):
+        self.get_user_profile().click()
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.private_office)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+        self.get_private_office().click()
+        print('Click get_private_office')
+        self.assert_url('https://myaccount.a1.by/login')
+        self.assert_word(self.assert_private_office, 'Вход в аккаунт')
+
 
     # Methods
 
@@ -269,23 +318,17 @@ class Subheadings_right(Base):
             self.back_and_refresh()
             print('-' * 100)
 
-
-
+            self.click_user_profile()
+            self.get_screenshot()
+            self.click_log_in()
+            self.get_screenshot()
+            self.back_and_refresh()
+            self.click_cash_in()
+            self.get_screenshot()
+            self.back_and_refresh()
+            self.click_private_office()
+            self.get_screenshot()
+            self.back_and_refresh()
             print('-' * 100)
-
-            # self.click_video_service_VOKA_button()
-            # print(f"List tabs: {str(self.driver.window_handles)}")
-            # self.driver.switch_to.window(self.driver.window_handles[1])
-            # print('Switch to window success')
-            # self.assert_url('https://internet.a1.by/minsk/iptv')
-            # # self.scroll(0 , 500)
-            # self.assert_word(self.assert_video_service_VOKA_button, 'Тарифы Трансляции ТВ в Минске')
-            # self.get_screenshot()
-            # self.driver.close()
-            # time.sleep(1)
-            # self.driver.switch_to.window(self.driver.window_handles[0])
-            # # self.back_and_refresh()
-            # print('-' * 100)
-
 
             Logger.add_end_step(url=self.driver.current_url, method='subheadings_menu_elements_right')
