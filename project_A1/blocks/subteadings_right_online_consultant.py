@@ -11,7 +11,7 @@ from base.base import Base
 from utilities.logger import Logger
 
 
-class Subheadings_right(Base):
+class Subheadings_right_online_consultant(Base):
 
     url = 'https://www.a1.by/ru/'
 
@@ -57,6 +57,16 @@ class Subheadings_right(Base):
     ask_questions = '/html/body/header/nav[2]/div/div[2]/div[2]/div/div[1]/button[1]'
     assert_ask_questions = '//div[contains (text(), "Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.")]'
     close_window_ask_questions = '//*[@id="webim_chat"]/div[1]/div/div'
+
+    your_name_input = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[1]/div[1]/label/input'
+    phone_input = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[1]/div[2]/label/input'
+    mail_input = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[1]/div[3]/label/input'
+    personal_account_input = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[1]/div[4]/label/input'
+    message_area = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[2]/label/textarea'
+    agree_checkbox = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[3]/label/svg[1]'
+    agree_checkbox_text = "assert_search_input = '//h1[contains (text(), 'Согласен на сбор, хранение, обработку персональных данных')]"
+    begin_talk_button = "assert_search_input = '//h1[contains (text(), 'Начать диалог')]"
+
 
     questions = '/html/body/header/nav[2]/div/div[2]/div[2]/div/div[1]/button[2]'
     assert_questions = '//h1[contains (text(), "Задать вопрос по покрытию")]'
@@ -127,180 +137,80 @@ class Subheadings_right(Base):
         self.get_icon_questions().click()
         print('Click icon_questions')
 
-    def click_questions(self):
-        self.get_icon_questions().click()
-        print('Click icon_questions')
+    def click_ask_questions_and_input_informations(self):
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.questions)))
+            EC.element_to_be_clickable((By.XPATH, self.ask_questions)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_questions().click()
-        print('Click questions')
-        self.assert_url('https://www.a1.by/ru/company/coverage-ask-question')
-        self.assert_word(self.assert_questions, 'Задать вопрос по покрытию')
+        self.get_ask_questions().click()
+        print('Click ask_questions')
 
-    def click_vk_link(self):
-        self.get_icon_questions().click()
-        print('Click icon_questions')
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.vk_link)))
+            EC.element_to_be_clickable((By.XPATH, self.your_name_input)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_vk_link().click()
-        print('Click vk_link')
-        print(f"List tabs: {str(self.driver.window_handles)}")
-        self.driver.switch_to.window(self.driver.window_handles[1])
-        # self.assert_url('https://vk.com/login?u=2&to=L3dyaXRlLTM1ODMxMDI-')
-        self.assert_word(self.assert_vk_link, 'Чтобы просматривать эту страницу, нужно зайти на сайт.')
-        self.get_screenshot()
-        self.driver.close()
-        self.driver.switch_to.window(self.driver.window_handles[0])
+        self.get_your_name_input().send_keys('daniil')
+        print('Input your_name_input')
 
-
-    def click_fb_link(self):
-        self.get_icon_questions().click()
-        print('Click icon_questions')
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.fb_link)))
+            EC.element_to_be_clickable((By.XPATH, self.phone_input)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_fb_link().click()
-        print('Click fb_link')
-        print(f"List tabs: {str(self.driver.window_handles)}")
-        self.driver.switch_to.window(self.driver.window_handles[1])
-        # self.assert_url('https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F223113717743177%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0')
-        self.assert_word(self.assert_fb_link, 'Будьте на связи с важными для вас людьми.')
-        self.get_screenshot()
-        self.driver.close()
-        self.driver.switch_to.window(self.driver.window_handles[0])
+        self.get_phone_input().send_keys('375331111111')
+        print('Input phone_input')
 
-    def click_ok_link(self):
-        self.get_icon_questions().click()
-        print('Click icon_questions')
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.ok_link)))
+            EC.element_to_be_clickable((By.XPATH, self.mail_input)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_ok_link().click()
-        print('Click ok_link')
-        print(f"List tabs: {str(self.driver.window_handles)}")
-        self.driver.switch_to.window(self.driver.window_handles[1])
-        # self.assert_url('https://ok.ru/dk?st.cmd=anonymMain&st.lgi=WYL93Tgz1t4H')
-        self.assert_word(self.assert_ok_link, 'Нет профиля в Одноклассниках')
-        self.get_screenshot()
-        self.driver.close()
-        self.driver.switch_to.window(self.driver.window_handles[0])
+        self.get_mail_input().send_keys('dan@gmail.com')
+        print('Input mail_input')
 
-
-    """"Cart"""
-    # Locators
-    cart = '//*[@id="mini-cart-loader-2"]'
-    assert_cart = '//h1[contains (text(), "Корзина")]'
-
-    # Getters
-    def get_cart(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
-
-    # Actions
-
-    def click_cart(self):
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.cart)))
+            EC.element_to_be_clickable((By.XPATH, self.personal_account_input)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_cart().click()
-        print('Click cart')
-        self.assert_url('https://www.a1.by/ru/cart')
-        self.assert_word(self.assert_cart, 'Корзина')
+        self.get_personal_account_input().send_keys('123456789')
+        print('Input personal_account_input')
 
-
-    """"User_profile"""
-    # Locators
-    user_profile = '//*[@id="dropdownMenuUser"]/span'
-
-    log_in = '//*[@id="loginButton"]/a'
-    assert_log_in = '//h1[contains (text(), "Вход в аккаунт")]'
-
-    cash_in = '//*[@id="refillBalance"]/a'
-    assert_cash_in = '//h2[contains (text(), "Пополнить баланс:")]'
-
-    private_office = '//*[@id="personalAccount"]/a'
-    assert_private_office = '//span[contains (text(), "Вход в аккаунт")]'
-
-
-
-    # Getters
-    def get_user_profile(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.user_profile)))
-
-    def get_log_in(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.log_in)))
-
-    def get_cash_in(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.cash_in)))
-
-    def get_private_office(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.private_office)))
-
-
-
-    # Actions
-
-    def click_user_profile(self):
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.user_profile)))
+            EC.element_to_be_clickable((By.XPATH, self.message_area)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_user_profile().click()
-        print('Click get_user_profile')
+        self.get_message_area().send_keys('Hello, I have problem!!!')
+        print('Input message_area')
 
-    def click_log_in(self):
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.log_in)))
+            EC.element_to_be_clickable((By.XPATH, self.agree_checkbox)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_log_in().click()
-        print('Click get_log_in')
-        self.assert_url('https://asmp.a1.by/asmp/LoginMasterServlet?service=Portal&cookie=skip&level=20&userRequestURL=https%3A%2F%2Fwww.a1.by%2Fru%2F%3FfromSSO%3Dtrue')
-        self.assert_word(self.assert_log_in, 'Вход в аккаунт')
+        self.get_agree_checkbox().click()
+        print('Click agree_checkbox')
 
-    def click_cash_in(self):
-        self.get_user_profile().click()
         element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.cash_in)))
+            EC.element_to_be_clickable((By.XPATH, self.agree_checkbox_text)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
         print("Move to element success")
-        self.get_cash_in().click()
-        print('Click get_cash_in')
-        self.assert_url('https://www.a1.by/epay')
-        self.assert_word(self.assert_cash_in, 'Пополнить баланс:')
-
-    def click_private_office(self):
-        self.get_user_profile().click()
-        element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.private_office)))
-        hover = ActionChains(self.driver).move_to_element(element)
-        hover.perform()
-        print("Move to element success")
-        self.get_private_office().click()
-        print('Click get_private_office')
-        self.assert_url('https://myaccount.a1.by/login')
-        self.assert_word(self.assert_private_office, 'Вход в аккаунт')
+        self.get_agree_checkbox_text().click()
+        print('Click agree_checkbox_text')
 
 
-    # Methods
 
-    def subheadings_menu_elements_right(self):
-        with allure.step('subheadings_menu_elements_right'):
-            Logger.add_start_step(method='subheadings_menu_elements_right')
+        self.assert_word(self.assert_ask_questions, 'Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.')
+        self.get_close_window_ask_questions().click()
+
+
+    def subheadings_menu_elements_right_online_consultant(self):
+        with allure.step('subheadings_menu_elements_right_online_consultant'):
+            Logger.add_start_step(method='subheadings_menu_elements_right_online_consultant')
 
             self.driver.get(self.url)
             self.driver.maximize_window()
@@ -315,31 +225,8 @@ class Subheadings_right(Base):
 
             self.click_icon_questions()
             self.get_screenshot()
-            self.click_questions()
+            self.click_ask_questions_and_input_informations()
             self.get_screenshot()
-            self.back_and_refresh()
-            self.click_vk_link()
-            self.click_fb_link()
-            self.click_ok_link()
-            # self.back_and_refresh()
             print('-' * 100)
 
-            self.click_cart()
-            self.get_screenshot()
-            self.back_and_refresh()
-            print('-' * 100)
-
-            self.click_user_profile()
-            self.get_screenshot()
-            self.click_log_in()
-            self.get_screenshot()
-            self.back_and_refresh()
-            self.click_cash_in()
-            self.get_screenshot()
-            self.back_and_refresh()
-            self.click_private_office()
-            self.get_screenshot()
-            self.back_and_refresh()
-            print('-' * 100)
-
-            Logger.add_end_step(url=self.driver.current_url, method='subheadings_menu_elements_right')
+            Logger.add_end_step(url=self.driver.current_url, method='subheadings_menu_elements_right_online_consultant')
