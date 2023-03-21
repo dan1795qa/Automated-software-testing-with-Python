@@ -53,10 +53,8 @@ class Subheadings_right_online_consultant(Base):
     """"Icon_questions"""
     # Locators
     icon_questions = '//*[@id="dropdownMenuContactsForm"]/span'
-
     ask_questions = '/html/body/header/nav[2]/div/div[2]/div[2]/div/div[1]/button[1]'
     assert_ask_questions = '//div[contains (text(), "Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.")]'
-    close_window_ask_questions = '//*[@id="webim_chat"]/div[1]/div/div'
 
     your_name_input = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[1]/div[1]/label/input'
     phone_input = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[1]/div[2]/label/input'
@@ -65,20 +63,10 @@ class Subheadings_right_online_consultant(Base):
     message_area = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[2]/label/textarea'
     agree_checkbox = '//*[@id="webim_chat"]/div[3]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div/div[3]/label/svg[1]'
     agree_checkbox_text = "assert_search_input = '//h1[contains (text(), 'Согласен на сбор, хранение, обработку персональных данных')]"
-    begin_talk_button = "assert_search_input = '//h1[contains (text(), 'Начать диалог')]"
+    assert_agree_checkbox_text = "//h1[contains (text(), 'Другие документы')]"
+    begin_talk_button = "//button[contains (text(), 'Начать диалог')]"
 
-
-    questions = '/html/body/header/nav[2]/div/div[2]/div[2]/div/div[1]/button[2]'
-    assert_questions = '//h1[contains (text(), "Задать вопрос по покрытию")]'
-
-    vk_link = '//span[contains (text(), "Вконтакте")]'
-    assert_vk_link = '//div[contains (text(), "Чтобы просматривать эту страницу, нужно зайти на сайт.")]'
-
-    fb_link = '//span[contains (text(), "Facebook")]'
-    assert_fb_link = '//h2[contains (text(), "Будьте на связи с важными для вас людьми.")]'
-
-    ok_link = '//span[contains (text(), "Одноклассники")]'
-    assert_ok_link = '//div[contains (text(), "Нет профиля в Одноклассниках")]'
+    close_window_ask_questions = '//*[@id="webim_chat"]/div[1]/div/div'
 
 
     # Getters
@@ -115,17 +103,7 @@ class Subheadings_right_online_consultant(Base):
     def get_close_window_ask_questions(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.close_window_ask_questions)))
 
-    def get_questions(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.questions)))
 
-    def get_vk_link(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.vk_link)))
-
-    def get_fb_link(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.fb_link)))
-
-    def get_ok_link(self):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, self.ok_link)))
 
     # Actions
     def click_icon_questions(self):
@@ -137,7 +115,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_icon_questions().click()
         print('Click icon_questions')
 
-    def click_ask_questions_and_input_informations(self):
+    def click_ask_questions(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.ask_questions)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -146,6 +124,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_ask_questions().click()
         print('Click ask_questions')
 
+    def input_your_name_input(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.your_name_input)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -154,6 +133,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_your_name_input().send_keys('daniil')
         print('Input your_name_input')
 
+    def input_phone_input(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.phone_input)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -162,6 +142,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_phone_input().send_keys('375331111111')
         print('Input phone_input')
 
+    def input_mail_input(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.mail_input)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -170,6 +151,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_mail_input().send_keys('dan@gmail.com')
         print('Input mail_input')
 
+    def input_personal_account_input(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.personal_account_input)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -178,6 +160,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_personal_account_input().send_keys('123456789')
         print('Input personal_account_input')
 
+    def input_message_area(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.message_area)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -186,6 +169,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_message_area().send_keys('Hello, I have problem!!!')
         print('Input message_area')
 
+    def input_agree_checkbox(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.agree_checkbox)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -194,6 +178,7 @@ class Subheadings_right_online_consultant(Base):
         self.get_agree_checkbox().click()
         print('Click agree_checkbox')
 
+    def input_agree_checkbox_text(self):
         element = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.agree_checkbox_text)))
         hover = ActionChains(self.driver).move_to_element(element)
@@ -202,11 +187,27 @@ class Subheadings_right_online_consultant(Base):
         self.get_agree_checkbox_text().click()
         print('Click agree_checkbox_text')
 
+    def input_begin_talk_button(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.begin_talk_button)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
+        self.get_begin_talk_button().click()
+        print('Click begin_talk_button')
 
-
-        self.assert_word(self.assert_ask_questions, 'Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.')
+    def click_close_window_ask_questions(self):
+        element = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.close_window_ask_questions)))
+        hover = ActionChains(self.driver).move_to_element(element)
+        hover.perform()
+        print("Move to element success")
         self.get_close_window_ask_questions().click()
+        print('Click close_window_ask_questions')
 
+
+
+    # Actions
 
     def subheadings_menu_elements_right_online_consultant(self):
         with allure.step('subheadings_menu_elements_right_online_consultant'):
@@ -218,15 +219,62 @@ class Subheadings_right_online_consultant(Base):
             self.get_screenshot()
             print('-' * 100)
 
-            self.input_search_input()
-            self.get_screenshot()
-            self.back_and_refresh()
-            print('-' * 100)
-
             self.click_icon_questions()
             self.get_screenshot()
-            self.click_ask_questions_and_input_informations()
+            print('-' * 100)
+
+            self.click_ask_questions()
+            self.get_screenshot()
+            self.assert_word(self.assert_ask_questions, 'Для начала диалога введите, пожалуйста, свою контактную информацию и вопрос.')
+            print('-' * 100)
+
+            self.input_your_name_input()
             self.get_screenshot()
             print('-' * 100)
+
+            self.input_phone_input()
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.input_mail_input()
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.input_personal_account_input()
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.input_message_area()
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.input_agree_checkbox()
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.input_agree_checkbox_text()
+            print(f"List tabs: {str(self.driver.window_handles)}")
+            # time.sleep(3)
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            self.assert_word(self.assert_agree_checkbox_text, 'Другие документы')
+            self.driver.close()
+            self.driver.switch_to.window(self.driver.window_handles[0])
+
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.input_begin_talk_button()
+            self.get_screenshot()
+            print('-' * 100)
+
+            self.click_close_window_ask_questions()
+            self.get_current_url()
+            self.get_screenshot()
+            print('-' * 100)
+
+
+
+
+
 
             Logger.add_end_step(url=self.driver.current_url, method='subheadings_menu_elements_right_online_consultant')
